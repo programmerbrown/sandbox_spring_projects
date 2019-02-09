@@ -2,7 +2,7 @@
 Sandbox for various Spring Boot projects used to explore building APIs
 
 ### Simple CRUD API
-The user will be able to create, read, update, and delete records of people from a single Oracle table.
+The user will be able to create, read, update, and delete records of people from a single PostgreSQL table.
 
 **Step 1 - Details**
 * A single table will be used to hold records of people.
