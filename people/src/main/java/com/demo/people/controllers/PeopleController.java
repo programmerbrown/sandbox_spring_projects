@@ -18,9 +18,7 @@ public class PeopleController {
     @GetMapping("/")
     public String getHomePage(Model model) {
 
-        Iterable<Person> people = peopleRepository.findAll();
-
-        model.addAttribute("people", people);
+        model.addAttribute("people", peopleRepository.findAll());
 
         return "home";
     }

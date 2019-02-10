@@ -14,34 +14,36 @@ The user will be able to create, read, update, and delete records of people from
   * birthday
   * favorite color
   * birth location
-  * biological mother's name (if unknown write _UNKNOWN_)
-  * biological father's name (if unknown write _UNKNOWN_)
-  * marital status (SINGLE, MARRIED, DIVORCED, WIDOWED)
-  * gender (MALE, FEMALE, NON-BINARY, UNKNOWN, or REFUSED TO ANSWER)
-  * vegetarian/vegan (YES or NO)
+  * biological mother's name 
+  * biological father's name
+  * marital status
+  * gender
+  * vegetarian/vegan
 * Use Thymeleaf to provide a UI for showing the user all the people records
 * Each record should be shown in an individual row that only shows the users first and last name
 
-**Step 2 - Change Person Attributes from String to Enums and Date**
-* Birthday should be a DATE
-* Favorite color is an ENUM
-* Marital Status is an ENUM
-* Gender is an ENUM
-* Vegetarian/Vegan is a BOOLEAN
-
-**Step 3 - Add Bootstrap**
+**Step 2 - Add Bootstrap**
 * Add Bootstrap to the project to improve the UX
 
-**Step 4 - Add Pagination**
+**Step 3 - Add Pagination**
 * Add pagination for showing all of the people records
 
-**Step 5 - Add Ability to View All the Details of a Person**
+**Step 4 - Add Ability to View All the Details of a Person**
 * Add a button on each row to view the person details
 * When the user clicks the view details button, the user navigates to a separate page to view the person details.
 
-**Step 6 - Add Ability to Update Person Record**
+**Step 5 - Add Ability to Update Person Record**
 * Add another button on each row to update the person details
 * When the user clicks the view details button, the user navigates to a form to update the person's details.
+
+**Step 6 - Change Person Attributes from String to Enums and Date**
+* biological mother's name is shown as _UNKNOWN_ if empty or unknown
+* biological father's name is shown as _UNKNOWN_ if empty or unknown
+* Birthday should be a DATE
+* Favorite color is an ENUM with values of popular colors
+* Marital Status is an ENUM with values SINGLE, MARRIED, DIVORCED, WIDOWED
+* Gender is an ENUM with values MALE, FEMALE, NON-BINARY, UNKNOWN, or REFUSED TO ANSWER
+* Vegetarian/Vegan is a BOOLEAN that displays YES or NO
 
 **Step 7 - Add Ability to Create a Person Record**
 * Add a button at the top of the page for creating a person record

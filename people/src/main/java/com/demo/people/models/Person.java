@@ -1,9 +1,6 @@
 package com.demo.people.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="PEOPLE")
@@ -21,17 +18,20 @@ public class Person {
 
     private String birthday;
 
-    public Person() {
+    private String favoriteColor;
 
-    }
+    private String birthLocation;
 
-    public Person(long peopleId, String firstName, String middleName, String lastName, String birthday) {
-        this.peopleId = peopleId;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.birthday = birthday;
-    }
+    private String motherName;
+
+    private String fatherName;
+
+    private String maritalStatus;
+
+    private String gender;
+
+    @Column(name="VEGETARIAN_VEGAN")
+    private String isVegetarianOrVegan;
 
     public long getPeopleId() {
         return peopleId;
@@ -71,5 +71,61 @@ public class Person {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public String getFavoriteColor() {
+        return favoriteColor;
+    }
+
+    public void setFavoriteColor(String favoriteColor) {
+        this.favoriteColor = favoriteColor;
+    }
+
+    public String getBirthLocation() {
+        return birthLocation;
+    }
+
+    public void setBirthLocation(String birthLocation) {
+        this.birthLocation = birthLocation;
+    }
+
+    public String getMotherName() {
+        return motherName;
+    }
+
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
+    }
+
+    public String getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public String getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getIsVegetarianOrVegan() {
+        return isVegetarianOrVegan;
+    }
+
+    public void setIsVegetarianOrVegan(String isVegetarianOrVegan) {
+        this.isVegetarianOrVegan = isVegetarianOrVegan;
     }
 }
