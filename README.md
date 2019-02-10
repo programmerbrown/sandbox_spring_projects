@@ -45,3 +45,7 @@ The user will be able to create, read, update, and delete records of people from
 
 **Step 8 - Add PostgreSQL**
 * You should be able to start the app in some other mode and be able to connect to a PostgresSQL DB
+
+**Step 9 - Add Validations to Person Attributes**
+* Add validations for each person attribute
+* Show appropriate errors when a validation is violated
