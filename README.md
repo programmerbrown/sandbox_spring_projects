@@ -5,7 +5,7 @@ Sandbox for various Spring Boot projects used to explore building APIs
 ---
 The user will be able to create, read, update, and delete records of people from a single table.
 
-**Step 1 - Display All People From the People Table on the Home Page**
+:white_check_mark: **Step 1 - Display All People From the People Table on the Home Page** 
 * A single table will be used to hold records of people.
 * Each record of a person will include the following attributes:
   * first name
@@ -22,7 +22,7 @@ The user will be able to create, read, update, and delete records of people from
 * Use Thymeleaf to provide a UI for showing the user all the people records
 * Each record should be shown in an individual row that only shows the users first and last name
 
-**Step 2 - Add Bootstrap**
+:white_check_mark: **Step 2 - Add Bootstrap**
 * Add Bootstrap to the project to improve the UX
 
 **Step 3 - Add Pagination**

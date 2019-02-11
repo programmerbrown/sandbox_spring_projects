@@ -1,12 +1,13 @@
 package com.demo.people.controllers;
 
-import com.demo.people.models.Person;
 import com.demo.people.repositories.PeopleRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/people")
 public class PeopleController {
 
     private PeopleRepository peopleRepository;
@@ -15,7 +16,7 @@ public class PeopleController {
         this.peopleRepository = peopleRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String getHomePage(Model model) {
 
         model.addAttribute("people", peopleRepository.findAll());
