@@ -2,6 +2,7 @@ package com.demo.people.controllers;
 
 import com.demo.people.repositories.PeopleRepository;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +38,24 @@ public class PeopleControllerTest {
     }
 
     @Test
-    public void shouldReturnHomePage() throws Exception {
-        mockMvc.perform(get("/"))
+    public void shouldReturnPeoplePage() throws Exception {
+        mockMvc.perform(get("/people"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("home"))
+                .andExpect(view().name("people"))
                 .andExpect(content().string(containsString("People Tracker")))
+                .andExpect(content().string(containsString("View Details")))
+                .andExpect(content().string(containsString("/people/1")))
                 .andExpect(model().attributeExists("people"))
                 .andExpect(model().attribute("people", hasSize(1)));
+    }
+
+    @Test
+    public void shouldReturnASinglePerson() throws Exception {
+        mockMvc.perform(get("/people/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("person"))
+                .andExpect(content().string(containsString("People Tracker")))
+                .andExpect(content().string(containsString("Back")))
+                .andExpect(model().attributeExists("person"));
     }
 }

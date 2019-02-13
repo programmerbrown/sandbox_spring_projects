@@ -28,7 +28,7 @@ The user will be able to create, read, update, and delete records of people from
 **Step 3 - Add Pagination**
 * Add pagination for showing all of the people records
 
-**Step 4 - Add Ability to View All the Details of a Person**
+:white_check_mark: **Step 4 - Add Ability to View All the Details of a Person**
 * Add a button on each row to view the person details
 * When the user clicks the view details button, the user navigates to a separate page to view the person details.
 

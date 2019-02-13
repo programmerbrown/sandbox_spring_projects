@@ -3,6 +3,10 @@ h1 {
 }
 
 .table {
-    width: 500px;
+    width: 600px;
+    margin: 20px;
+}
+
+#back-button {
     margin: 20px;
 }
