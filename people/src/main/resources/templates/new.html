@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>People Tracker</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link href="../static/css/base.css" rel="stylesheet" th:href="@{/css/base.css}"/>
+</head>
+<body>
+<h2>Create a Person Record</h2>
+<form method="POST" th:action="@{/people}" th:object="${person}">
+    <div class="form-group">
+        <label th:for="firstName">First Name: </label>
+        <input class="form-control" type="text" th:field="*{firstName}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="middleName">Middle Name: </label>
+        <input class="form-control" type="text" th:field="*{middleName}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="lastName">Last Name: </label>
+        <input class="form-control" type="text" th:field="*{lastName}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="birthday">Birthday: </label>
+        <input class="form-control" type="text" th:field="*{birthday}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="favoriteColor">Favorite Color: </label>
+        <input class="form-control" type="text" th:field="*{favoriteColor}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="birthLocation">Birth Location: </label>
+        <input class="form-control" type="text" th:field="*{birthLocation}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="motherName">Mother's Name: </label>
+        <input class="form-control" type="text" th:field="*{motherName}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="fatherName">Father's Name: </label>
+        <input class="form-control" type="text" th:field="*{fatherName}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="maritalStatus">Marital Status: </label>
+        <input class="form-control" type="text" th:field="*{maritalStatus}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="gender">Gender: </label>
+        <input class="form-control" type="text" th:field="*{gender}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="isVegetarianOrVegan">Is Vegetarian or Vegan?: </label>
+        <input class="form-control" type="text" th:field="*{isVegetarianOrVegan}"/>
+    </div>
+
+    <a id="cancel-button" class="btn btn-secondary" role="button" th:href="@{/people}">Cancel</a>
+    <input id="create-button" class="btn btn-primary" type="submit" value="Create Person">
+</form>
+</body>
+</html>

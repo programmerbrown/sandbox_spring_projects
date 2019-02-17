@@ -45,7 +45,7 @@ The user will be able to create, read, update, and delete records of people from
 * Gender is an ENUM with values MALE, FEMALE, NON-BINARY, UNKNOWN, or REFUSED TO ANSWER
 * Vegetarian/Vegan is a BOOLEAN that displays YES or NO
 
-**Step 7 - Add Ability to Create a Person Record**
+:white_check_mark: **Step 7 - Add Ability to Create a Person Record**
 * Add a button at the top of the page for creating a person record
 * When the user clicks the create person record button, the user navigates to a form to create a person record.
 

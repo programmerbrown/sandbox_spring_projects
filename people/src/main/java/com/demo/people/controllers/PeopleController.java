@@ -1,11 +1,10 @@
 package com.demo.people.controllers;
 
+import com.demo.people.models.Person;
 import com.demo.people.repositories.PeopleRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/people")
@@ -24,10 +23,26 @@ public class PeopleController {
         return "people";
     }
 
+    @PostMapping
+    public String createAPersonRecord(@ModelAttribute Person person) {
+        Person savedPerson = peopleRepository.save(person);
+
+        return "redirect:people/" + savedPerson.getPeopleId();
+    }
+
     @GetMapping("/{id}")
     public String getASinglePerson(@PathVariable long id, Model model) {
         model.addAttribute("person", peopleRepository.findById(id).get());
 
         return "person";
     }
+
+    @GetMapping("/new")
+    public String getCreateForm(Model model) {
+        model.addAttribute("person", new Person());
+
+        return "new";
+    }
+
+
 }

@@ -1,4 +1,4 @@
-h1 {
+h1, h2 {
     margin: 20px;
 }
 
@@ -7,6 +7,29 @@ h1 {
     margin: 20px;
 }
 
-#back-button {
+.form-group {
     margin: 20px;
 }
+
+.form-control {
+    width: 350px;
+}
+
+#go-to-create-form {
+    margin-left: 20px;
+}
+
+#create-button {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#cancel-button {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#back-button {
+    margin-left: 20px;
+}
+

@@ -7,7 +7,7 @@
     <link href="../static/css/base.css" rel="stylesheet" th:href="@{/css/base.css}"/>
 </head>
 <body>
-    <h1 class="text-left">People Tracker</h1>
+    <h1 th:text="${person.firstName} + ' ' + ${person.lastName}" class="text-left">People Tracker</h1>
     <table class="table table-bordered">
         <thead>
             <tr>
