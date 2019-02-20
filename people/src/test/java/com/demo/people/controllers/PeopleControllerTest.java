@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -18,6 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class PeopleControllerTest {
 
     @Autowired
@@ -136,5 +138,27 @@ public class PeopleControllerTest {
                 .andExpect(model().attributeExists("person"))
                 .andExpect(model().attribute("person", hasProperty("peopleId", equalTo(1L))))
                 .andExpect(model().attribute("person", hasProperty("firstName", equalTo("James"))));
+    }
+
+    @Test
+    public void shouldDeletePersonRecord() throws Exception {
+
+        mockMvc.perform(post("/people")
+                .contentType(APPLICATION_FORM_URLENCODED)
+                .param("firstName", "Tasha")
+                .param("middleName", "James")
+                .param("lastName", "Jones"))
+                .andExpect(status().is3xxRedirection())
+                .andReturn();
+
+        mockMvc.perform(get("/people"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("people"))
+                .andExpect(model().attribute("people", hasSize(2)))
+                .andExpect(content().string(containsString("Delete Person")));
+
+        mockMvc.perform(delete("/people/2"))
+                .andExpect(status().is3xxRedirection())
+                .andReturn();
     }
 }

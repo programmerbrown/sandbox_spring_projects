@@ -49,7 +49,7 @@ The user will be able to create, read, update, and delete records of people from
 * Add a button at the top of the page for creating a person record
 * When the user clicks the create person record button, the user navigates to a form to create a person record.
 
-**Step 8 - Add Ability to Delete a Person Record**
+:white_check_mark: **Step 8 - Add Ability to Delete a Person Record**
 * Add another button on each row to delete a person record
 * When the user clicks the delete a person record, the user is prompted with a popup window to confirm the deletion.
 

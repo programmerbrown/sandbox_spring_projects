@@ -27,7 +27,7 @@ public class PeopleController {
     public String createAPersonRecord(@ModelAttribute Person person) {
         Person savedPerson = peopleRepository.save(person);
 
-        return "redirect:people/" + savedPerson.getPeopleId();
+        return "redirect:/people/" + savedPerson.getPeopleId();
     }
 
     @GetMapping("/{id}")
@@ -51,11 +51,18 @@ public class PeopleController {
         return "new";
     }
 
-    @GetMapping("{id}/edit")
+    @GetMapping("/{id}/edit")
     public String getEditForm(@PathVariable long id, Model model) {
         model.addAttribute("person", peopleRepository.findById(id).get());
 
         return "edit";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deletePersonRecord(@PathVariable long id) {
+        peopleRepository.deleteById(id);
+
+        return "redirect:/people";
     }
 
 }
