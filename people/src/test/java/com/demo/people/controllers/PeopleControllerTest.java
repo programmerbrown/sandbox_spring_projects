@@ -11,11 +11,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.*;
 import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
@@ -40,6 +38,7 @@ public class PeopleControllerTest {
 
     @Test
     public void shouldReturnPeoplePage() throws Exception {
+
         mockMvc.perform(get("/people"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("people"))
@@ -53,6 +52,7 @@ public class PeopleControllerTest {
 
     @Test
     public void shouldReturnASinglePerson() throws Exception {
+
         mockMvc.perform(get("/people/1"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("person"))
@@ -63,6 +63,7 @@ public class PeopleControllerTest {
 
     @Test
     public void shouldReturnAFormToCreateAPersonRecord() throws Exception {
+
         mockMvc.perform(get("/people/new"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("new"))
@@ -73,6 +74,12 @@ public class PeopleControllerTest {
 
     @Test
     public void shouldCreatePersonRecord() throws Exception {
+
+        mockMvc.perform(get("/people"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("people"))
+                .andExpect(model().attribute("people", hasSize(1)));
+
         mockMvc.perform(post("/people")
                 .contentType(APPLICATION_FORM_URLENCODED)
                 .param("firstName", "Tasha")
@@ -85,5 +92,49 @@ public class PeopleControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("people"))
                 .andExpect(model().attribute("people", hasSize(2)));
+    }
+
+    @Test
+    public void shouldReturnUpdateFormForPersonRecord() throws Exception {
+
+        mockMvc.perform(get("/people/1/edit"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("edit"))
+                .andExpect(model().attributeExists("person"))
+                .andExpect(model().attribute("person", hasProperty("peopleId", equalTo(1L))))
+                .andExpect(model().attribute("person", hasProperty("firstName", equalTo("Nick"))));
+
+    }
+
+    @Test
+    public void shouldUpdatePersonRecord() throws Exception {
+
+        mockMvc.perform(get("/people/1"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("person"))
+                .andExpect(model().attribute("person", hasProperty("peopleId", equalTo(1L))))
+                .andExpect(model().attribute("person", hasProperty("firstName", equalTo("Nick"))));
+
+        mockMvc.perform(put("/people/1")
+                .contentType(APPLICATION_FORM_URLENCODED)
+                .param("peopleId", "1")
+                .param("firstName", "James")
+                .param("middleName", "George")
+                .param("lastName", "Brown")
+                .param("birthday", "11-9-1980")
+                .param("favoriteColor", "BLACK")
+                .param("birthLocation", "AUGUSTA,GA")
+                .param("motherName", "JACQUELINE BROWN")
+                .param("fatherName", "KENNETH BROWN")
+                .param("maritalStatus", "SINGLE")
+                .param("gender", "MALE")
+                .param("isVegetarianOrVegan", "NO"))
+                .andExpect(status().is2xxSuccessful());
+
+        mockMvc.perform(get("/people/1"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("person"))
+                .andExpect(model().attribute("person", hasProperty("peopleId", equalTo(1L))))
+                .andExpect(model().attribute("person", hasProperty("firstName", equalTo("James"))));
     }
 }

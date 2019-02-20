@@ -32,7 +32,7 @@ The user will be able to create, read, update, and delete records of people from
 * Add a button on each row to view the person details
 * When the user clicks the view details button, the user navigates to a separate page to view the person details.
 
-**Step 5 - Add Ability to Update Person Record**
+:white_check_mark: **Step 5 - Add Ability to Update Person Record**
 * Add another button on each row to update the person details
 * When the user clicks the view details button, the user navigates to a form to update the person's details.
 

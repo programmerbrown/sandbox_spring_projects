@@ -37,6 +37,13 @@ public class PeopleController {
         return "person";
     }
 
+    @PutMapping("/{id}")
+    public String updateSinglePerson(@PathVariable long id, @ModelAttribute Person person, Model model) {
+        model.addAttribute("person", peopleRepository.save(person));
+
+        return "person";
+    }
+
     @GetMapping("/new")
     public String getCreateForm(Model model) {
         model.addAttribute("person", new Person());
@@ -44,5 +51,11 @@ public class PeopleController {
         return "new";
     }
 
+    @GetMapping("{id}/edit")
+    public String getEditForm(@PathVariable long id, Model model) {
+        model.addAttribute("person", peopleRepository.findById(id).get());
+
+        return "edit";
+    }
 
 }
