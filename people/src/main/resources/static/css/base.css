@@ -3,7 +3,7 @@ h1, h2 {
 }
 
 .table {
-    width: 1000px;
+    width: auto;
     margin: 20px;
 }
 
@@ -31,5 +31,11 @@ h1, h2 {
 
 #back-button {
     margin-left: 20px;
+}
+
+.button-row {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
