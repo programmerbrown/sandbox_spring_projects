@@ -39,3 +39,14 @@ h1, h2 {
     margin-right: 10px;
 }
 
+select {
+    -webkit-appearance: none;
+    background-color: white;
+    border-radius: 1px;
+    width: 350px;
+    height: 30px;
+    font-size: 18px;
+    color: #212529;
+    padding: 1px 5px 3px 5px;
+}
+

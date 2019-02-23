@@ -28,7 +28,18 @@
     </div>
     <div class="form-group">
         <label th:for="favoriteColor">Favorite Color: </label>
-        <input class="form-control" type="text" th:field="*{favoriteColor}"/>
+        <br />
+        <select th:field="*{favoriteColor}">
+            <option th:value="''">Choose a favorite color</option>
+            <option th:value="BLUE">BLUE</option>
+            <option th:value="BLACK">BLACK</option>
+            <option th:value="RED">RED</option>
+            <option th:value="PURPLE">PURPLE</option>
+            <option th:value="ORANGE">ORANGE</option>
+            <option th:value="YELLOW">YELLOW</option>
+            <option th:value="GREEN">GREEN</option>
+            <option th:value="WHITE">WHITE</option>
+        </select>
     </div>
     <div class="form-group">
         <label th:for="birthLocation">Birth Location: </label>
@@ -43,16 +54,34 @@
         <input class="form-control" type="text" th:field="*{fatherName}"/>
     </div>
     <div class="form-group">
-        <label th:for="maritalStatus">Marital Status: </label>
-        <input class="form-control" type="text" th:field="*{maritalStatus}"/>
+        <label th:for="maritalStatus">Current Marital Status: </label>
+        <br />
+        <select th:field="*{maritalStatus}">
+            <option th:value="''">Choose a marital status</option>
+            <option th:value="SINGLE">SINGLE</option>
+            <option th:value="MARRIED">MARRIED</option>
+            <option th:value="DIVORCED">DIVORCED</option>
+            <option th:value="WIDOWED">WIDOWED</option>
+        </select>
     </div>
     <div class="form-group">
         <label th:for="gender">Gender: </label>
-        <input class="form-control" type="text" th:field="*{gender}"/>
+        <br />
+        <select th:field="*{gender}">
+            <option th:value="''">Choose a gender</option>
+            <option th:value="FEMALE">FEMALE</option>
+            <option th:value="MALE">MALE</option>
+            <option th:value="OTHER">NON-BINARY or OTHER</option>
+        </select>
     </div>
     <div class="form-group">
-        <label th:for="isVegetarianOrVegan">Is Vegetarian or Vegan?: </label>
-        <input class="form-control" type="text" th:field="*{isVegetarianOrVegan}"/>
+        <label th:for="isVegetarianOrVegan">Is this Person a vegetarian or vegan?: </label>
+        <br />
+        <select th:field="*{isVegetarianOrVegan}">
+            <option th:value="''">Choose dietary option</option>
+            <option th:value="NO">NO</option>
+            <option th:value="YES">YES</option>
+        </select>
     </div>
 
     <a id="cancel-button" class="btn btn-secondary" role="button" th:href="@{/people}">Cancel</a>
