@@ -66,7 +66,7 @@ public class PeopleController {
     public String deletePersonRecord(@PathVariable long id) {
         peopleRepository.deleteById(id);
 
-        return "redirect:/people";
+        return "redirect:/people?page=0&limit=10";
     }
 
 }
