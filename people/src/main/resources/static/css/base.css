@@ -1,5 +1,22 @@
+.jumbotron {
+    width: 750px;
+    margin: 50px auto;
+}
+
 h1, h2 {
     margin: 20px;
+}
+
+.jumbotron h1 {
+    margin: 0px;
+}
+
+.jumbotron h2 {
+    margin: 0px;
+}
+
+nav {
+    margin: 0 20px;
 }
 
 .table {

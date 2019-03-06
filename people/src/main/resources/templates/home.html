@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>People Tracker</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link href="../static/css/base.css" rel="stylesheet" th:href="@{/css/base.css}"/>
+</head>
+<body>
+<div class="jumbotron">
+    <h1 class="display-4">People Tracker</h1>
+    <p class="lead">People Tracker is all about tracking people!</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" th:href="@{/people(page=0,limit=10)}" role="button">Let's Get Started</a>
+    </p>
+</div>
+</body>
+</html>

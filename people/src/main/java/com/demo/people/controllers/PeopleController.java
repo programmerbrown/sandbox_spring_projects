@@ -2,6 +2,8 @@ package com.demo.people.controllers;
 
 import com.demo.people.models.Person;
 import com.demo.people.repositories.PeopleRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +19,10 @@ public class PeopleController {
     }
 
     @GetMapping
-    public String getListOfAllPeople(Model model) {
-        model.addAttribute("people", peopleRepository.findAll());
+    public String getListOfAllPeople(@RequestParam("page") int page, @RequestParam("limit") int limit, Model model) {
+
+        Pageable pageable = PageRequest.of(page, limit);
+        model.addAttribute("page", peopleRepository.findAll(pageable));
 
         return "people";
     }

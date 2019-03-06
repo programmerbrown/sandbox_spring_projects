@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -39,17 +40,27 @@ public class PeopleControllerTest {
     }
 
     @Test
-    public void shouldReturnPeoplePage() throws Exception {
+    public void shouldReturnAListOfPeople() throws Exception {
 
-        mockMvc.perform(get("/people"))
+        mockMvc.perform(get("/people?page=0&limit=10"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("people"))
                 .andExpect(content().string(containsString("People Tracker")))
                 .andExpect(content().string(containsString("View Details")))
                 .andExpect(content().string(containsString("Create a Person")))
-                .andExpect(content().string(containsString("/people/1")))
-                .andExpect(model().attributeExists("people"))
-                .andExpect(model().attribute("people", hasSize(1)));
+                .andExpect(content().string(containsString("/people/10")))
+                .andExpect(model().attributeExists("page"))
+                .andExpect(model().attribute("page", hasProperty("content", hasSize(10))));
+
+        mockMvc.perform(get("/people?page=0&limit=20"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("people"))
+                .andExpect(content().string(containsString("People Tracker")))
+                .andExpect(content().string(containsString("View Details")))
+                .andExpect(content().string(containsString("Create a Person")))
+                .andExpect(content().string(containsString("/people/20")))
+                .andExpect(model().attributeExists("page"))
+                .andExpect(model().attribute("page", hasProperty("content", hasSize(20))));
     }
 
     @Test
@@ -77,10 +88,8 @@ public class PeopleControllerTest {
     @Test
     public void shouldCreatePersonRecord() throws Exception {
 
-        mockMvc.perform(get("/people"))
-                .andExpect(status().isOk())
-                .andExpect(model().attributeExists("people"))
-                .andExpect(model().attribute("people", hasSize(1)));
+        assertEquals(26L, peopleRepository.count());
+
 
         mockMvc.perform(post("/people")
                 .contentType(APPLICATION_FORM_URLENCODED)
@@ -90,10 +99,7 @@ public class PeopleControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
 
-        mockMvc.perform(get("/people"))
-                .andExpect(status().isOk())
-                .andExpect(model().attributeExists("people"))
-                .andExpect(model().attribute("people", hasSize(2)));
+        assertEquals(27L, peopleRepository.count());
     }
 
     @Test
@@ -143,22 +149,12 @@ public class PeopleControllerTest {
     @Test
     public void shouldDeletePersonRecord() throws Exception {
 
-        mockMvc.perform(post("/people")
-                .contentType(APPLICATION_FORM_URLENCODED)
-                .param("firstName", "Tasha")
-                .param("middleName", "James")
-                .param("lastName", "Jones"))
-                .andExpect(status().is3xxRedirection())
-                .andReturn();
-
-        mockMvc.perform(get("/people"))
-                .andExpect(status().isOk())
-                .andExpect(model().attributeExists("people"))
-                .andExpect(model().attribute("people", hasSize(2)))
-                .andExpect(content().string(containsString("Delete Person")));
+        assertEquals(26L, peopleRepository.count());
 
         mockMvc.perform(delete("/people/2"))
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
+
+        assertEquals(25L, peopleRepository.count());
     }
 }
