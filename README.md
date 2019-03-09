@@ -25,7 +25,7 @@ The user will be able to create, read, update, and delete records of people from
 :white_check_mark: **Step 2 - Add Bootstrap**
 * Add Bootstrap to the project to improve the UX
 
-**Step 3 - Add Pagination**
+:white_check_mark: **Step 3 - Add Pagination**
 * Add pagination for showing all of the people records
 
 :white_check_mark: **Step 4 - Add Ability to View All the Details of a Person**

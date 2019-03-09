@@ -43,11 +43,9 @@
 
 <nav th:if="${page.totalPages > 1}" aria-label="Page navigation example">
     <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <li class="page-item" th:each="i : ${#numbers.sequence(1,page.totalPages)}">
+            <a class="page-link" th:href="@{/people(page=${i - 1},limit=10)}" th:text="${i}"></a>
+        </li>
     </ul>
 </nav>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
